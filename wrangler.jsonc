@@ -1,0 +1,24 @@
+{
+  // Static assets served by a thin Worker (src/index.js).
+  // Deploy: npx wrangler@4 deploy
+  "name": "paramedtools",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": false,
+  "routes": [
+    // Cloudflare creates the DNS records and certificates. The deploy fails if a
+    // hostname already has a DNS record (e.g. a parking A/CNAME): delete that first.
+    // paramedtools.com currently has no root site (checked 21/11/2026), only
+    // subdomains, so the first deploy should create the root record cleanly.
+    { "pattern": "paramedtools.com", "custom_domain": true },
+    { "pattern": "www.paramedtools.com", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    // The Worker must see every request, or asset paths like "/" would be served
+    // directly and never reach any future redirect logic.
+    "run_worker_first": true
+  }
+}

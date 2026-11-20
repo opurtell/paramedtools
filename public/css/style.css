@@ -1,0 +1,104 @@
+/* One stylesheet, one accent colour. Keep it plain: no gradients, glows,
+   hover lifts, coloured cards, illustrations, emoji, pill badges, giant
+   hero type, or decorative motifs. Structure does the work. */
+:root {
+  --paper: #fbfaf7;
+  --ink: #1b1f24;
+  --muted: #5f6670;
+  --rule: #e3e1dc;
+  --rule-strong: #1b1f24;
+  --accent: #2a5a8a;
+  --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141619;
+    --ink: #e5e7ea;
+    --muted: #9ba2ab;
+    --rule: #2a2e34;
+    --rule-strong: #e5e7ea;
+    --accent: #8db8e3;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-block: 72px 48px;
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
+  display: grid;
+  gap: 56px;
+}
+
+h1, h2, p { margin: 0; }
+
+header { display: grid; gap: 10px; }
+h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
+header p { color: var(--muted); max-width: 58ch; }
+
+.tools {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule-strong);
+}
+.tools li {
+  display: grid;
+  gap: 4px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.tools h2 { font-size: 19px; font-weight: 600; line-height: 1.35; }
+.tools h2 a { color: var(--ink); text-decoration: none; }
+.tools h2 a:hover { color: var(--accent); text-decoration: underline; }
+.tools p { color: var(--muted); max-width: 58ch; }
+.tools .link { font-family: var(--mono); font-size: 14px; color: var(--accent); }
+
+.related { display: grid; gap: 8px; }
+.related h2 {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.related p { color: var(--muted); max-width: 62ch; }
+
+footer {
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+  border-top: 1px solid var(--rule);
+  padding-top: 16px;
+}
+.muted { color: var(--muted); }
+
+@media (max-width: 760px) {
+  .page {
+    padding-block: 40px 28px;
+    padding-left: max(18px, env(safe-area-inset-left));
+    padding-right: max(18px, env(safe-area-inset-right));
+    gap: 40px;
+  }
+  h1 { font-size: 28px; }
+  .tools li { padding: 20px 0; }
+}
