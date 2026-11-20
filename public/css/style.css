@@ -55,6 +55,35 @@ header { display: grid; gap: 10px; }
 h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
 header p { color: var(--muted); max-width: 58ch; }
 
+.feature {
+  display: grid;
+  gap: 10px;
+  border: 1px solid var(--rule-strong);
+  padding: 24px;
+}
+.feature .eyebrow {
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.feature h2 { font-size: 22px; font-weight: 600; line-height: 1.35; }
+.feature h2 a { color: var(--ink); text-decoration: none; }
+.feature h2 a:hover { color: var(--accent); text-decoration: underline; }
+.feature > p { color: var(--muted); max-width: 58ch; }
+.preview {
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid var(--rule);
+  padding-top: 16px;
+  margin-top: 6px;
+}
+.preview-date { font-family: var(--mono); font-size: 14px; color: var(--muted); }
+.preview-title { font-size: 18px; font-weight: 600; line-height: 1.35; }
+.preview-title a { color: var(--ink); text-decoration: none; }
+.preview-title a:hover { color: var(--accent); text-decoration: underline; }
+.preview p { max-width: 58ch; }
+
 .tools {
   list-style: none;
   margin: 0;
@@ -100,5 +129,6 @@ footer {
     gap: 40px;
   }
   h1 { font-size: 28px; }
+  .feature { padding: 20px; }
   .tools li { padding: 20px 0; }
 }
